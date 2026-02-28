@@ -1,0 +1,359 @@
+/* =========================
+   LAYOUT IMPROVEMENTS
+   Main content spacing and mobile optimization
+   ========================= */
+
+/* Fix main content to not interfere with header/footer */
+main {
+    min-height: calc(100vh - 160px); /* Adjust based on header + footer height */
+    padding-top: 80px; /* Height of fixed header */
+    position: relative;
+    z-index: 1;
+}
+
+/* When header is sticky/fixed */
+.header-area.header-sticky ~ main,
+.background-header ~ main {
+    padding-top: 80px;
+}
+
+/* Ensure footer stays at bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* Page content wrapper for consistent spacing */
+.page-content {
+    padding: 40px 0;
+}
+
+.page-content.no-banner {
+    padding-top: 120px; /* Extra space for pages without banner */
+}
+
+/* Container improvements for better mobile spacing */
+@media (max-width: 767px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    main {
+        padding-top: 80px;
+    }
+
+    .page-content {
+        padding: 30px 0;
+    }
+
+    .page-content.no-banner {
+        padding-top: 100px;
+    }
+}
+
+/* Mobile-specific header adjustments */
+@media (max-width: 767px) {
+    .header-area {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    /* Prevent content from going under fixed header */
+    body {
+        padding-top: 0;
+    }
+
+    /* Adjust main nav menu positioning on mobile */
+    .header-area .main-nav .nav {
+        margin-top: 0 !important;
+        padding-top: 80px;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        background: #fff;
+    }
+
+    .header-area.header-sticky .nav {
+        margin-top: 0 !important;
+        padding-top: 0;
+    }
+}
+
+/* Mobile improvements for common sections */
+@media (max-width: 767px) {
+    /* Section headings */
+    .section-heading {
+        margin-top: 60px;
+        margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    /* Banner adjustments */
+    .main-banner .caption h2 {
+        font-size: 42px !important;
+    }
+
+    .main-banner .caption h6 {
+        font-size: 16px;
+    }
+
+    .main-banner .caption {
+        width: 90%;
+    }
+
+    /* Job cards / trainer items */
+    #trainers .trainer-item {
+        margin-bottom: 20px;
+    }
+
+    /* Form elements */
+    .contact-form {
+        padding: 20px !important;
+    }
+
+    .contact-form #contact {
+        padding: 25px !important;
+    }
+
+    /* Buttons */
+    .main-button a,
+    .btn-login,
+    .btn-primary {
+        font-size: 14px;
+        padding: 12px 18px;
+    }
+
+    /* Features section */
+    #features {
+        margin-bottom: 60px;
+    }
+
+    .feature-item {
+        margin-bottom: 30px;
+    }
+
+    .feature-item .left-icon img {
+        width: 60px;
+        margin-right: 20px;
+    }
+
+    .feature-item .right-content h4 {
+        font-size: 17px;
+    }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 991px) {
+    main {
+        padding-top: 80px;
+    }
+
+    .page-content {
+        padding: 35px 0;
+    }
+
+    .section-heading {
+        margin-top: 100px;
+        margin-bottom: 60px;
+    }
+
+    .main-banner .caption h2 {
+        font-size: 56px;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    .section-heading h2 {
+        font-size: 20px;
+    }
+
+    .main-banner .caption h2 {
+        font-size: 36px !important;
+    }
+
+    .main-banner .caption h6 {
+        font-size: 14px;
+    }
+
+    /* Reduce padding on small screens */
+    .page-content {
+        padding: 20px 0;
+    }
+
+    .page-content.no-banner {
+        padding-top: 90px;
+    }
+
+    /* Job cards full width on small phones */
+    #trainers .trainer-item h4 {
+        font-size: 17px;
+    }
+
+    #trainers .trainer-item p {
+        font-size: 13px;
+    }
+
+    /* Form adjustments */
+    input,
+    textarea,
+    select {
+        font-size: 14px !important;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+}
+
+/* Fix overlapping issues */
+.header-area {
+    z-index: 1000;
+}
+
+footer {
+    z-index: 10;
+    position: relative;
+}
+
+main {
+    z-index: 1;
+    position: relative;
+}
+
+/* Smooth scrolling with offset for fixed header */
+html {
+    scroll-padding-top: 80px;
+    scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 767px) {
+    body,
+    html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Fix for rows that might overflow */
+    .row {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+}
+
+/* Touch-friendly spacing on mobile */
+@media (max-width: 767px) {
+    /* Increase touch target sizes */
+    .main-nav .nav li a {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    button,
+    .btn,
+    a.button {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+
+    /* Social icons touch targets */
+    ul.social-icons li a {
+        padding: 8px;
+        display: inline-block;
+    }
+
+    /* Form inputs */
+    input,
+    textarea,
+    select {
+        min-height: 44px;
+    }
+}
+
+/* Loading state improvements */
+body.loading main {
+    opacity: 0;
+}
+
+body.loaded main {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+/* Print styles */
+@media print {
+    .header-area,
+    .js-preloader,
+    footer {
+        display: none !important;
+    }
+
+    main {
+        padding-top: 0 !important;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .header-area {
+        border-bottom: 2px solid var(--habari-dark);
+    }
+
+    footer {
+        border-top: 2px solid var(--habari-dark);
+    }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    /* You can add dark mode styles here if needed */
+}
+
+/* Fix for iOS Safari bottom bar */
+@supports (-webkit-touch-callout: none) {
+    main {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 991px) and (orientation: landscape) {
+    .main-banner .caption h2 {
+        font-size: 48px !important;
+    }
+
+    .section-heading {
+        margin-top: 60px;
+        margin-bottom: 40px;
+    }
+}
